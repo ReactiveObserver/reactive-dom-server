@@ -18,7 +18,7 @@ class ReactiveDomServer {
           connection.close()
           return;
         }
-        dao = rd.createDAO([], message.sessionId)
+        dao = rd.createDAO([], message.sessionId, { stateless: false })
         this.daoInitializer(dao)
       } else {
         switch(message.type) {
