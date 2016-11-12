@@ -84,6 +84,9 @@ class ReactiveDomServer {
     });
     conn.on('close', () => dao.dispose());
   }
+  installHandles(server, options) {
+    this.sockjs.installHandlers(server, {prefix:'/echo'});
+  }
 }
 
 module.exports = SockJsConnection
