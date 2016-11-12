@@ -1,0 +1,41 @@
+{
+  "author": {
+    "name": "Michał Łaszczewski",
+    "email": "m8@em8.pl",
+    "url": "http://realtime.guru/"
+  },
+  "bugs": {
+    "url": "https://github.com/reactiveobserver/reactive-dom-server/issues"
+  },
+  "dependencies": {},
+  "description": "Reactive observer reactive dom server",
+  "devDependencies": {
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-react-jsx": "*",
+    "babel-preset-es2015": "*",
+    "better-assert": "github:devinrhode2/better-assert-browser",
+    "mocha": "^3.1.0"
+  },
+  "directories": {},
+  "gitHead": "fde9e805483a494ccfb61e4323df55c9c5725709",
+  "homepage": "",
+  "license": "MIT",
+  "main": "index",
+  "maintainers": [
+    {
+      "name": "Michał Łaszczewski",
+      "email": "michal@cloudforge.pl"
+    }
+  ],
+  "name": "reactiveobserver-reactive-dom-server",
+  "optionalDependencies": {},
+  "readme": "README.md",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "compileTests": "webpack test/*.js tests-bundle.js"
+  },
+  "version": "0.0.1"
+}
