@@ -7,7 +7,9 @@
   "bugs": {
     "url": "https://github.com/reactiveobserver/reactive-dom-server/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "sockjs": "^0.3.18"
+  },
   "description": "Reactive observer reactive dom server",
   "devDependencies": {
     "babel-loader": "^6.2.5",

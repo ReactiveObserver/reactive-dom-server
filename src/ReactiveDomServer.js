@@ -1,11 +1,11 @@
-var SockJS = require("sockjs")
+var sockjs = require("sockjs")
 var rd = require("reactive-dom")
 
 class ReactiveDomServer {
   constructor(daoInitializer, options) {
     this.daoInitializer = daoInitializer
     this.sockjs = sockjs.createServer(options)
-    sockjs.on('connection', conn => this.handleConnection(conn))
+    this.sockjs.on('connection', conn => this.handleConnection(conn))
   }
   handleConnection(connection) {
     var dao
@@ -82,11 +82,11 @@ class ReactiveDomServer {
         }
       }
     });
-    conn.on('close', () => dao.dispose());
+    connection.on('close', () => dao.dispose());
   }
-  installHandles(server, options) {
-    this.sockjs.installHandlers(server, {prefix:'/echo'});
+  installHandlers(server, options) {
+    this.sockjs.installHandlers(server, options);
   }
 }
 
-module.exports = SockJsConnection
+module.exports = ReactiveDomServer
