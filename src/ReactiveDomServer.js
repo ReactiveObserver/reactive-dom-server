@@ -53,15 +53,17 @@ class ReactiveDomServer {
           case 'observe' :
             var path = message.to.concat([message.what])
             var spath = JSON.stringify(path)
+            //console.log("OBSERVE", path)
             var observer = observers.get(spath)
             if(observer) return;
-            var observable = dao.observable(path)
-            var observer = (signal, ...params) => connection.write(JSON.stringify({
+            var observable = dao.observable(path[0],path[1])
+            //console.log("OBSERVABLE", observable)
+            var observer = (value) => connection.write(JSON.stringify({
               type: "notify",
               from: message.to,
               what: message.what,
-              signal: signal,
-              args: params
+              signal: 'set',
+              args: [value]
             }))
             observable.observe(observer)
             observers.set(spath, observer)
@@ -71,7 +73,7 @@ class ReactiveDomServer {
             var spath = JSON.stringify(path)
             var observer = observers.get(spath)
             if(!observer) return;
-            var observable = dao.observable(path)
+            var observable = dao.observable(path[0],path[1])
             observable.unobserve(observer)
             observers.delete(spath)
             break;
