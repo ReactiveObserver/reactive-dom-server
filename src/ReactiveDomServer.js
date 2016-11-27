@@ -27,12 +27,12 @@ class ReactiveDomServer {
             dao.request(path[0], path[1], ...message.args).then(
               result => connection.write(JSON.stringify({
                 type:"response",
-                responseId: request.requestId,
+                responseId: message.requestId,
                 response: result
               })),
               error => connection.write(JSON.stringify({
                 type:"error",
-                responseId: request.requestId,
+                responseId: message.requestId,
                 error: error
               }))
             );
