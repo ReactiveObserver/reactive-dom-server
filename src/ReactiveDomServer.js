@@ -24,7 +24,7 @@ class ReactiveDomServer {
         switch(message.type) {
           case 'request':
             var path = message.to.concat([message.method])
-            dao.request(path, message.args).then(
+            dao.request(path[0], path[1], ...message.args).then(
               result => connection.write(JSON.stringify({
                 type:"response",
                 responseId: request.requestId,
@@ -48,7 +48,7 @@ class ReactiveDomServer {
             break;
           case 'event':
             var path = message.to.concat([message.method])
-            dao.request(path, message.args)
+            dao.request(path[0], path[1], ...message.args)
             break;
           case 'observe' :
             var path = message.to.concat([message.what])
